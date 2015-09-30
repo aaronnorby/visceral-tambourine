@@ -3,12 +3,13 @@
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"> 
 
-    <title>Example1</title>
+    <title>Example2</title>
+
     
   </head>
   <body>
+    <div>This example uses "loadPlaylist" to load up an autoplaying playlist.</div>
 
-    Simplest example, loading a video and starting playback when it's ready: 
 
     <div id="player"></div>
 
@@ -28,24 +29,33 @@
     </script>
 
     <script>
-            
       var player;
       function onYouTubeIframeAPIReady() {
         player = new YT.Player('player', {
           height: '200',
           width: '200',
-          videoId: 'vQhqikWnQCU',
-          events: { 
-            'onReady': onPlayerReady
+          //videoId: 'CpmDAu_47OE',
+          events: {
+            'onReady': onPlayerReady,
+            //'onStateChange': loadNext
           }
         });
       }
+      
+      var playlist = ['vQhqikWnQCU', 'GBvLzHJ6mh8', 'yO7MWuJ7zLA'];
+      var next = 0;
 
       function onPlayerReady(event) {
-        event.target.playVideo();
+        event.target.loadPlaylist(
+          playlist
+        );
       }
-  
+
+            
       
+    
     </script>
+    
   </body>
 </html>
+
