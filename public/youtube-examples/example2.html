@@ -32,6 +32,7 @@
 
     <script>
       var player;
+      // this is going to replace the div above via its id with an iframe
       function onYouTubeIframeAPIReady() {
         player = new YT.Player('player', {
           height: '200',
@@ -44,9 +45,13 @@
         });
       }
       
+      //hardcoded list of video ids
       var playlist = ['vQhqikWnQCU', 'GBvLzHJ6mh8', 'yO7MWuJ7zLA'];
+
+      // the next video to play starts at index 0 of the playlist
       var next = 0;
 
+      // when the player is ready, we start the first video
       function onPlayerReady(event) {
         console.log("data: ", event.data);
         player.cueVideoById(playlist[next]);
@@ -54,6 +59,8 @@
         event.target.playVideo();
       }
 
+      // this is called when the state changes. We check to see if that was a
+      // change to an ENDED state and if it was we load the next song in our list
       function loadNext(event) {
         console.log("data: ", event.data);
         if (playlist[next] && event.data === YT.PlayerState.ENDED) {

@@ -30,6 +30,8 @@
     <script>
             
       var player;
+
+      // this will replace the div above with an iframe
       function onYouTubeIframeAPIReady() {
         player = new YT.Player('player', {
           height: '200',
@@ -41,6 +43,7 @@
         });
       }
 
+      // autoplay the video (note this won't work in iOS) 
       function onPlayerReady(event) {
         event.target.playVideo();
       }
