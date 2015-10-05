@@ -51,6 +51,7 @@ angular.module('app', ['app.controllers', 'app.services','ui.router'])
           }
         })
       };
+      
       //directs user to the create event page
       $scope.create = function () {
         $location.path('/create');
